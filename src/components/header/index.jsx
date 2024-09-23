@@ -29,17 +29,18 @@ export default function Header() {
         <div className="container__right min-w-[950px] flex-2 bg-gradient-to-r from-[#2c4a77] via-[#3b5a8c] to-[#5a7ea5] p-8 flex ml-8 rounded-lg shadow-xl animate-openFromCenter">
           <div className="content flex-1 text-left space-y-4 pr-8 opacity-0 animate-fadeInText">
             <h4 className="text-lg font-semibold text-[#f4c430] uppercase tracking-wide">
-              {profileData.province}
+              {profileData.province} - {profileData.district}
             </h4>
             <h2 className="text-4xl font-extrabold text-[#ffffff] leading-tight relative">
               {profileData.name}
               <span className="absolute bottom-0 left-0 w-12 h-1 bg-[#f4c430]"></span>
             </h2>
             <h3 className="text-xl font-medium text-[#e5e7eb] mb-2">
-              Desa {profileData.village}
+              {/* Desa {profileData.village} */}
             </h3>
             <p className="leading-relaxed text-[#e5e7eb] max-w-md text-justify">
-              {profileData.village} Adalah sebuah kecamatan {profileData.address}
+              {/* {profileData.village} Adalah sebuah kecamatan {profileData.address} */}
+              {/* {profileData.district} - {profileData.subdistrict} */}
             </p>
           </div>
 
