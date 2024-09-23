@@ -1,7 +1,7 @@
 import API from "./api";
 
 // GUID desa
-const GUID = '2305e536-0ef6-48e7-9aac-79ca236433fa';
+const GUID = '1a0a8002-fc25-4a78-b083-115f3c666371';
 
 // Mengambil profil desa
 export const fetchVillageProfile = async () => {

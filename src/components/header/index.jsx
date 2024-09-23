@@ -36,7 +36,7 @@ export default function Header() {
       >
         <div className="flex-1 max-w-xl flex flex-col items-center lg:items-start text-center lg:text-left px-6 lg:px-12 z-10">
           <h1 className="text-3xl lg:text-2xl font-semibold text-gray-800 mb-2 relative">
-            {profileData.province}
+            {profileData.province} - {profileData.district}
           </h1>
 
           <h2 className="text-3xl lg:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight font-header relative">
@@ -49,7 +49,7 @@ export default function Header() {
           </p>
 
           <p className="text-base lg:text-lg text-gray-700 mb-6 leading-relaxed">
-          {profileData.village} Adalah sebuah kecamatan  {profileData.address}
+          {/* {profileData.village} Adalah sebuah kecamatan  {profileData.address} */}
           </p>
         </div>
 
