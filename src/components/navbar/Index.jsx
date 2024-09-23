@@ -20,7 +20,7 @@ export default function Navbar({ scrollToSection, refs }) {
   if (error) return <div>{error}</div>;
 
   return (
-    <nav className="bg-[#1e3a5f] text-white p-4 shadow-md fixed top-0 left-0 w-full z-50 animate-fadeIn">
+    <nav className="bg-red-600 text-white p-4 shadow-md fixed top-0 left-0 w-full z-50 animate-fadeIn">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-2xl font-bold flex items-center space-x-4">
           <Link to="/" className="flex items-center hover:text-gray-200">
@@ -41,7 +41,7 @@ export default function Navbar({ scrollToSection, refs }) {
           <li>
             <button
               onClick={() => scrollToSection(refs.homeRef)}
-              className="hover:text-[#f4c430] transition duration-300 ease-in-out transform hover:scale-105"
+              className="hover:text-gray-300 transition duration-300 ease-in-out transform hover:scale-105"
             >
               Home
             </button>
@@ -49,7 +49,7 @@ export default function Navbar({ scrollToSection, refs }) {
           <li>
             <button
               onClick={() => scrollToSection(refs.apparatusRef)}
-              className="hover:text-[#f4c430] transition duration-300 ease-in-out transform hover:scale-105"
+              className="hover:text-gray-300 transition duration-300 ease-in-out transform hover:scale-105"
             >
               Aparat Desa
             </button>
@@ -57,7 +57,7 @@ export default function Navbar({ scrollToSection, refs }) {
           <li>
             <button
               onClick={() => scrollToSection(refs.newsRef)}
-              className="hover:text-[#f4c430] transition duration-300 ease-in-out transform hover:scale-105"
+              className="hover:text-gray-300 transition duration-300 ease-in-out transform hover:scale-105"
             >
               Berita Desa
             </button>
@@ -65,7 +65,7 @@ export default function Navbar({ scrollToSection, refs }) {
           <li>
             <button
               onClick={() => scrollToSection(refs.marketRef)}
-              className="hover:text-[#f4c430] transition duration-300 ease-in-out transform hover:scale-105"
+              className="hover:text-gray-300 transition duration-300 ease-in-out transform hover:scale-105"
             >
               UMKM Desa
             </button>
@@ -73,7 +73,7 @@ export default function Navbar({ scrollToSection, refs }) {
           <li>
             <button
               onClick={() => scrollToSection(refs.activitiesRef)}
-              className="hover:text-[#f4c430] transition duration-300 ease-in-out transform hover:scale-105"
+              className="hover:text-gray-300 transition duration-300 ease-in-out transform hover:scale-105"
             >
               Kegiatan Desa
             </button>
@@ -165,4 +165,3 @@ export default function Navbar({ scrollToSection, refs }) {
     </nav>
   );
 }
-

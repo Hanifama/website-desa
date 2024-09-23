@@ -1,106 +1,73 @@
-import defaultImg from '../../assets/default.jpg';
 import { useVillageNews } from '../../hooks/useAPI';
-
-const defaultNewsItems = [
-  {
-    id: 1,
-    title: "Default Berita",
-    date: "1 September 2024",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tincidunt, eros vel fringilla bibendum, nulla sapien fermentum odio.",
-    imgSrc: defaultImg
-  },
-  {
-    id: 2,
-    title: "Default Berita",
-    date: "2 September 2024",
-    description: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    imgSrc: defaultImg
-  },
-  {
-    id: 3,
-    title: "Default Berita",
-    date: "3 September 2024",
-    description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
-    imgSrc: defaultImg
-  },
-  {
-    id: 4,
-    title: "Default Berita",
-    date: "1 September 2024",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tincidunt, eros vel fringilla bibendum, nulla sapien fermentum odio.",
-    imgSrc: defaultImg
-  },
-  {
-    id: 5,
-    title: "Judul Berita 2",
-    date: "2 September 2024",
-    description: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    imgSrc: defaultImg
-  },
-  {
-    id: 6,
-    title: "Default Berita",
-    date: "3 September 2024",
-    description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
-    imgSrc: defaultImg
-  }
-];
 
 export default function News() {
   const { news, loading, error } = useVillageNews();
+  const newsData = news || [];
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
   
-  if (!news || news.length === 0) {
-    return (
-      <section className="py-12 bg-gray-50">
-        <div className="container mx-auto px-6">
-          <div className="text-center">
-            <h2 className="text-4xl font-extrabold text-gray-700">
-              Tidak ada berita untuk saat ini.
-            </h2>
-          </div>
-        </div>
-      </section>
-    );
-  }
+  const shouldScroll = newsData.length > 2;
 
   return (
-    <section className="py-12 bg-gray-50">
-      <div className="container mx-auto px-6">
-        <div className="mb-12">
-          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-600">
-            Berita Desa Kami
+    <section className="relative h-screen overflow-hidden py-16 px-6 lg:px-16 bg-gradient-to-r from-gray-100 to-white text-gray-800">
+      <div className="absolute inset-0 overflow-hidden">
+        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1440 320" fill="currentColor" preserveAspectRatio="none">
+          <path fillOpacity="0.1" d="M0,128L1440,64L1440,320L0,320Z"></path>
+        </svg>
+      </div>
+      <div className="relative container mx-auto flex flex-col lg:flex-row items-center justify-between">
+        
+        <div className={`lg:w-1/2 mt-8 lg:mt-0 ${shouldScroll ? 'overflow-x-scroll scrollbar-hide' : ''}`}>
+          <div className={`flex ${shouldScroll ? 'flex-nowrap' : 'flex-wrap'} gap-6`}>
+            {newsData.length === 0 ? (
+              <div className="flex-shrink-0 w-64 bg-white rounded-lg shadow-lg p-4 text-center text-gray-700">
+                <p>No news available</p>
+              </div>
+            ) : (
+              newsData.map((newsItem, index) => (
+                <div
+                  key={newsItem._id}
+                  className="flex-shrink-0 w-64 bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105"
+                >
+                  <img
+                    src={newsItem.file ? `https://bucket-2.nos.wjv-1.neo.id/${newsItem.file}` : newsItem.file}
+                    alt={newsItem.name}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{newsItem.name}</h3>
+                    <p className="text-base text-gray-700 mb-4">
+                      {newsItem.description}
+                    </p>
+                    {/* <a
+                      href="#"
+                      className="inline-block px-4 py-2 text-sm font-semibold text-white bg-red-700 rounded-lg hover:bg-red-600 transition duration-300"
+                    >
+                      Selengkapnya
+                    </a> */}
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+        
+        <div className="lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0">
+          <h2 className="text-3xl lg:text-4xl font-extrabold mb-6 leading-tight text-red-700">
+            Berita Desa Terbaru
           </h2>
-          <p className="text-xl font-medium text-gray-700 italic mb-2">
-            Ikuti perkembangan terbaru dan berita penting dari desa kami.
+          <p className="text-base lg:text-lg mb-6 leading-relaxed">
+            Jelajahi berita terbaru dari desa kami, mulai dari festival budaya hingga pertemuan lokal. Temukan apa yang membuat komunitas kami unik dan dinamis.
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mb-2"></div>
+          {/* <a
+            href="#activities"
+            className="inline-block px-6 py-3 text-lg font-semibold text-white bg-red-700 rounded-lg shadow-lg hover:bg-red-600 transition duration-300"
+          >
+            Lihat Detail
+          </a> */}
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {news.map((item, index) => (
-            <div key={index} className="bg-white shadow-lg rounded-lg overflow-hidden">
-              <img
-                className="w-full h-48 object-cover"
-                src={item.file ? `https://bucket-2.nos.wjv-1.neo.id/${item.file}` : defaultImg}
-                alt={`Berita Desa ${item.name || item.title}`} />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">{item.title}</h3>
-                <p className="text-gray-600 text-sm mb-4">
-                  {new Date(item.createAt || item.date).toLocaleDateString('id-ID', {
-                    day: 'numeric',
-                    month: 'long',
-                    year: 'numeric',
-                  })}
-                </p>
-                <p className="text-gray-700 mb-4">{item.description}</p>
-                {/* <a href="#" className="text-primary-color hover:underline">Baca Selengkapnya</a> */}
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );

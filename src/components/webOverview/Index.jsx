@@ -1,57 +1,40 @@
-import React from 'react';
-
-export default function WebsiteOverview (){
+export default function WebsiteOverview() {
   return (
-    <section className="h-screen py-18 px-6 flex gap-8">
-      {/* Konten utama di sisi kiri */}
-      <div className="flex-1 max-w-lg">
-        <p className="max-w-max py-2 mb-2 text-base font-semibold text-primary-color border border-primary-color rounded-full">
-          Website Desa
-        </p>
-        <h2 className="text-3xl font-semibold leading-tight text-dark">
-          Apa Yang Tersedia <span className="text-[#2c4a77]">Website Desa?</span>
-        </h2>
-        <p className="text-light leading-6">
-          Website desa kami memberikan akses mudah ke berita terbaru, kegiatan mendatang, dan informasi tentang fasilitas desa. Temukan layanan masyarakat, jadwal acara, dan detail wisata dengan cepat dan praktis.
-        </p>
-        <div>
-          {/* Additional content can go here */}
-        </div>
-      </div>
-
-      {/* Konten utama di sisi kanan */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-[600px]">
-        {/* Container untuk Card pertama dan kedua */}
-        <div className="flex flex-col gap-4 md:col-span-1">
-          {/* Card pertama di atas */}
-          <div className="p-4 rounded-lg shadow-md w-[350px] h-[200px] flex flex-col items-center justify-center bg-white transition-transform transform hover:scale-105 hover:shadow-lg hover:bg-gray-100">
-            <span className="inline-block mb-4 text-2xl text-primary-color">
-              <i className="ri-pulse-line"></i>
-            </span>
-            <h4 className="text-xl font-semibold text-dark text-center">Berita Terbaru Desa</h4>
-          </div>
-
-          {/* Card kedua di bawah */}
-          <div className="z-10 p-4 rounded-lg shadow-md w-[350px] h-[200px] flex flex-col items-center justify-center bg-white transition-transform transform hover:scale-105 hover:shadow-lg hover:bg-gray-100">
-            <span className="inline-block mb-4 text-2xl text-primary-color">
-              <i className="ri-pencil-ruler-2-line"></i>
-            </span>
-            <h4 className="text-xl font-semibold text-dark text-center">Kegiatan dan Acara</h4>
+    <section className="relative mb-10 px-6 bg-white text-gray-800">
+      <div className="relative container mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">        
+        <div className="lg:w-1/3 px-4 flex items-center justify-center">
+          <div className="relative w-full aspect-w-1 aspect-h-1 bg-red-600 text-white rounded-lg shadow-lg flex items-center justify-center p-8">
+            <div className="text-center">
+              <svg className="w-12 h-12 text-white mb-4 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 18H6v-2h12v2zm0-4H6v-2h12v2zm0-4H6V6h12v2z" />
+              </svg>
+              <h3 className="text-2xl font-semibold mb-4">Berita dan Informasi</h3>
+            </div>
           </div>
         </div>
-
-        {/* Card ketiga di kanan (mencakup dua baris) */}
-        <div className="h-[420px] w-[350px] flex items-center justify-center">
-          <div className="rounded-lg shadow-md w-full h-[200px] flex flex-col items-center justify-center bg-white transition-transform transform hover:scale-105 hover:shadow-lg hover:bg-gray-100">
-            <span className="inline-block mb-4 text-2xl text-primary-color">
-              <i className="ri-graduation-cap-line"></i>
-            </span>
-            <h4 className="text-xl font-semibold text-dark text-center">UMKM Desa Kami</h4>
+        
+        <div className="lg:w-1/3 px-4 flex items-center justify-center">
+          <div className="relative w-full aspect-w-1 aspect-h-1 bg-red-600 text-white rounded-lg shadow-lg flex items-center justify-center p-8">
+            <div className="text-center">
+              <svg className="w-12 h-12 text-white mb-4 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 4a4 4 0 0 0-4 4v1H6v2h2v1a4 4 0 0 0 8 0v-1h2v-2h-2V8a4 4 0 0 0-4-4zm0 6a2 2 0 0 1-2-2v-1a2 2 0 0 1 4 0v1a2 2 0 0 1-2 2zM6 10h12v10H6V10zm1 2v8h10v-8H7z" />
+              </svg>
+              <h3 className="text-2xl font-semibold mb-4">UMKM Desa</h3>
+            </div>
+          </div>
+        </div>
+        
+        <div className="lg:w-1/3 px-4 flex items-center justify-center">
+          <div className="relative w-full aspect-w-1 aspect-h-1 bg-red-600 text-white rounded-lg shadow-lg flex items-center justify-center p-8">
+            <div className="text-center">
+              <svg className="w-12 h-12 text-white mb-4 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M21 4h-2V2h-2v2H7V2H5v2H3v16h18V4zm-1 14H4v-8h16v8z" />
+              </svg>
+              <h3 className="text-2xl font-semibold mb-4">Kegiatan dan Acara</h3>
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
-};
-
-
+}

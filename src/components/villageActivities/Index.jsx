@@ -1,43 +1,7 @@
+
+import villageActivity from '../../assets/tent-1.jpg'; 
 import { useVillageActivities } from '../../hooks/useAPI';
 
-const defaultActivities = [
-  // {
-  //   id: 1,
-  //   name: "Gotong Royong Bersih Desa",
-  //   description: "Bersama-sama membersihkan lingkungan desa untuk menjaga kebersihan dan kenyamanan.",
-  //   imgSrc: defaultImg
-  // },
-  // {
-  //   id: 2,
-  //   name: "Pelatihan Keterampilan",
-  //   description: "Mengembangkan keterampilan warga melalui pelatihan dan workshop.",
-  //   imgSrc: defaultImg
-  // },
-  // {
-  //   id: 3,
-  //   name: "Pasar Malam Desa",
-  //   description: "Nikmati suasana pasar malam dengan berbagai kuliner dan hiburan.",
-  //   imgSrc: defaultImg
-  // },
-  // {
-  //   id: 4,
-  //   name: "Senam Pagi Bersama",
-  //   description: "Aktivitas olahraga bersama untuk kesehatan dan kebersamaan warga.",
-  //   imgSrc: defaultImg
-  // },
-  // {
-  //   id: 5,
-  //   name: "Festival Budaya Desa",
-  //   description: "Merayakan budaya lokal dengan pertunjukan seni dan makanan tradisional.",
-  //   imgSrc: defaultImg
-  // },
-  // {
-  //   id: 6,
-  //   name: "Pertandingan Olahraga Desa",
-  //   description: "Kompetisi olahraga untuk memupuk semangat sportivitas antarwarga.",
-  //   imgSrc: defaultImg
-  // }
-];
 
 export default function VillageActivities() {
   const { activities, loading, error } = useVillageActivities();
@@ -46,55 +10,51 @@ export default function VillageActivities() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
-  if (activitiesData.length === 0) {
-    return (
-      <section className="py-16 bg-gray-100">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-extrabold text-gray-700">
-            Tidak ada kegiatan untuk saat ini.
-          </h2>
-        </div>
-      </section>
-    );
-  }
-
   return (
-    <section className="py-16 bg-gray-100">
-      <div className="container mx-auto px-6">
-        <div className="mb-12">
-          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-600">
-            Kegiatan Desa Kami
-          </h2>
-          <p className="text-xl font-medium text-gray-700 italic mb-2">
-            Ikuti berbagai kegiatan seru dan bermanfaat yang diselenggarakan di desa kami.
-          </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mb-2"></div>
+    <section className="relative h-screen py-20 px-6 lg:px-16 bg-gradient-to-r from-gray-200 via-white to-red-100 text-gray-800">
+  <div className="absolute inset-0 overflow-hidden">
+    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1440 320" fill="currentColor" preserveAspectRatio="none">
+      <path fillOpacity="0.1" d="M0,256L1440,192L1440,320L0,320Z"></path>
+    </svg>
+  </div>
+  <div className="relative container mx-auto flex flex-col lg:flex-row gap-8">
+    
+    <div className="lg:w-1/3 mb-8 lg:mb-0">
+      <h2 className="text-4xl font-extrabold mb-4 text-center lg:text-left text-red-600">
+        Kegiatan Desa
+      </h2>
+      <p className="text-lg mb-6 leading-relaxed text-center lg:text-left text-gray-800">
+        Desa kami aktif mengadakan berbagai kegiatan yang mempererat kebersamaan warga. Mulai dari kegiatan sosial, budaya, hingga olahraga, setiap warga terlibat dalam menjaga keharmonisan dan keberlanjutan desa.
+      </p>
+      {/* <a
+        href="#join"
+        className="inline-block px-6 py-3 text-lg font-semibold text-red-600 bg-white rounded-lg shadow-lg hover:bg-gray-100 transition duration-300"
+      >
+        Ikuti Kegiatan Kami
+      </a> */}
+    </div>
+    
+    <div className="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6">
+      {activitiesData.map((activity) => (
+        <div
+          key={activity._id}
+          className="relative w-full h-64 bg-white rounded-lg shadow-xl border border-red-300 overflow-hidden transform hover:scale-105 transition duration-300"
+        >
+          <img
+            src={activity.file ? `${"https://bucket-2.nos.wjv-1.neo.id/"}${activity.file}` : villageActivity}
+            alt={activity.name || 'Village Activity'}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black opacity-30"></div>
+          <div className="absolute bottom-4 left-4 text-white">
+            <h3 className="text-xl font-bold">{activity.description || 'Kegiatan Desa'}</h3>
+            <p className="text-sm">{activity.name || 'Deskripsi kegiatan belum tersedia.'}</p>
+          </div>
         </div>
+      ))}
+    </div>
+  </div>
+</section>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-          {activitiesData.map((activity, index) => (
-            <div
-              key={index}
-              className={`relative group overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 bg-white 
-                ${index === 0 ? 'rounded-tl-lg' : ''} 
-                ${index === 2 ? 'rounded-tr-lg' : ''} 
-                ${index === 3 ? 'rounded-bl-lg' : ''} 
-                ${index === 5 ? 'rounded-br-lg' : ''}`}
-            >
-              <img
-                className="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110"
-                src={activity.file ? `https://bucket-2.nos.wjv-1.neo.id/${activity.file}` : activity.imgSrc}
-                alt={activity.name}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute bottom-0 left-0 p-5 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <h3 className="text-xl font-semibold">{activity.name}</h3>
-                <p className="mt-1 text-sm">{activity.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
   );
 }

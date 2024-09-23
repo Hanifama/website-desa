@@ -31,7 +31,7 @@ export default function Apparatus() {
   if (error) return <div>Error: {error}</div>;
 
   const apparatuses = aparattus || [];
-
+  
   const duplicatedApparatuses = [...apparatuses, ...apparatuses];
 
   const handleImageError = (event) => {
@@ -40,7 +40,18 @@ export default function Apparatus() {
 
   return (
     <section className="flex flex-col md:flex-row items-center p-10 gap-8">
+      
+      <div className="flex-1 flex flex-col items-start text-left max-w-4xl">
+        <p className="text-lg font-semibold text-gray-600 mb-2">Aparat Desa</p>
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          Memperkenalkan <span className="text-primary-color">Aparat Desa</span>
+        </h2>
+        <p className="text-lg text-gray-700 mb-6">
+          Jelajahi inovasi dalam pengelolaan desa melalui aplikasi web desa yang dirancang khusus untuk memenuhi kebutuhan administratif dan komunikasi desa.
+        </p>
+      </div>
 
+      
       <div
         className="relative overflow-hidden flex-1"
         onMouseEnter={() => setScrollSpeed(1)}
@@ -51,6 +62,7 @@ export default function Apparatus() {
           className="flex gap-6 whitespace-nowrap"
           style={{ display: 'flex', flexDirection: 'row', width: 'max-content' }}
         >
+          
           {duplicatedApparatuses.map((apparatus) => (
             <div
               key={apparatus._id}
@@ -63,7 +75,7 @@ export default function Apparatus() {
                     ? `https://bucket-2.nos.wjv-1.neo.id/${apparatus.file}`
                     : defaultAparat}
                   alt={`Aparat Desa : ${apparatus.name}`}
-                  onError={handleImageError}
+                  onError={handleImageError} 
                 />
               </div>
               <div className="flex flex-col items-center flex-1 justify-center text-center">
@@ -74,17 +86,6 @@ export default function Apparatus() {
           ))}
         </div>
       </div>
-
-      <div className="flex-1 flex flex-col items-start text-left max-w-4xl">
-        <p className="text-lg font-semibold text-gray-600 mb-2">Aparat Desa</p>
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">
-          Memperkenalkan <span className="text-primary-color">Aparat Desa</span>
-        </h2>
-        <p className="text-lg text-gray-700 mb-6">
-          Jelajahi inovasi dalam pengelolaan desa melalui aplikasi web desa yang dirancang khusus untuk memenuhi kebutuhan administratif dan komunikasi desa.
-        </p>
-      </div>
-
     </section>
   );
 }

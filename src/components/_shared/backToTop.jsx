@@ -29,7 +29,7 @@ export default function BackToTop () {
     isVisible && (
       <button
         onClick={handleClick}
-        className="fixed bottom-5 right-5 p-3 bg-blue-600 text-white rounded-full shadow-lg transition duration-300 ease-in-out hover:bg-blue-700 focus:outline-none"
+        className="fixed bottom-5 right-5 p-3 bg-red-600 text-white rounded-full shadow-lg transition duration-300 ease-in-out hover:bg-red-700 focus:outline-none"
         aria-label="Back to Top"
       >
         <svg

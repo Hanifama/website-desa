@@ -1,9 +1,9 @@
 import API from "./api";
 
-// Village GUID 
+// GUID desa
 const GUID = '2305e536-0ef6-48e7-9aac-79ca236433fa';
 
-// Fetch the village profile
+// Mengambil profil desa
 export const fetchVillageProfile = async () => {
   try {
     const response = await API.get(`/api/village/profile`, {
@@ -16,7 +16,7 @@ export const fetchVillageProfile = async () => {
   }
 };
 
-// Fetch village UMKM (Micro, Small, and Medium Enterprises)
+// Mengambil UMKM desa
 export const fetchVillageUMKM = async (page = 1, limit = 10) => {
   try {
     const response = await API.get(`/api/umkm/village`, {
@@ -29,7 +29,7 @@ export const fetchVillageUMKM = async (page = 1, limit = 10) => {
   }
 };
 
-// Fetch village news
+// Mengambil berita desa
 export const fetchVillageNews = async (page = 1, limit = 10) => {
   try {
     const response = await API.get(`/api/report/village`, {
@@ -42,7 +42,7 @@ export const fetchVillageNews = async (page = 1, limit = 10) => {
   }
 };
 
-// Fetch village activities
+// Mengambil berita kegiatan desa
 export const fetchVillageActivities = async (page = 1, limit = 10) => {
   try {
     const response = await API.get(`/api/report/village`, {
@@ -55,7 +55,7 @@ export const fetchVillageActivities = async (page = 1, limit = 10) => {
   }
 };
 
-// Fetch village assets
+// Mengambil aset desa
 export const fetchVillageAssets = async (page = 1, limit = 10) => {
   try {
     const response = await API.get(`/api/report/village`, {
