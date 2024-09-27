@@ -1,7 +1,7 @@
 import API from "./api";
 
 // Village GUID 
-const GUID = '2305e536-0ef6-48e7-9aac-79ca236433fa';
+const GUID = 'c7442333-41ae-4629-b9a6-dd3256513d40';
 
 // Fetch the village profile
 export const fetchVillageProfile = async () => {
