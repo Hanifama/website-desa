@@ -1,30 +1,29 @@
 import defaultImg from '../../assets/default.jpg';
-import { useVillageUMKM } from '../../hooks/useAPI';
+import { FaStore } from 'react-icons/fa';
 
-const defaultUMKMItems = [
-  { id: 1, name: "Default UMKM", description: "Produk makanan ringan khas desa yang lezat dan sehat.", imgSrc: defaultImg },
-  { id: 2, name: "Default UMKM", description: "Kerajinan tangan unik dengan sentuhan lokal yang autentik.", imgSrc: defaultImg },
-  { id: 3, name: "Default UMKM", description: "Produk fashion tradisional yang nyaman dan stylish.", imgSrc: defaultImg },
-  { id: 4, name: "Default UMKM", description: "Aneka produk lokal berkualitas dari desa kami.", imgSrc: defaultImg },
-  { id: 5, name: "Default UMKM", description: "Produk lokal yang inovatif dan menarik dari desa kami.", imgSrc: defaultImg },
-  { id: 6, name: "Default UMKM", description: "Produk kerajinan tangan yang mempesona dan berkualitas.", imgSrc: defaultImg },
-  { id: 7, name: "Default UMKM", description: "Aneka produk lokal dengan desain yang menarik dan berkualitas.", imgSrc: defaultImg }
-];
+export default function VillageMarket({data}) {
+  const dataProdukUMKM = data || [];
 
-export default function VillageMarket() {
-  const { produkUMKM, loading, error } = useVillageUMKM();
-  const dataProdukUMKM = produkUMKM || [];
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
-  
   if (dataProdukUMKM.length === 0) {
     return (
-      <section className="py-16 bg-gray-100">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-extrabold text-gray-700">
-            Tidak ada produk UMKM untuk saat ini.
+      <section className="h-screen py-16 bg-gray-100">
+        <div className="container mx-auto px-6 mb-12">
+          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-green-600 mb-2">
+            UMKM Desa Kami
           </h2>
+          <p className="text-xl font-medium text-gray-700 italic mb-2">
+            Temukan berbagai usaha mikro, kecil, dan menengah di desa kami. Dukung mereka dengan membeli produk lokal yang unik dan berkualitas!
+          </p>
+          <div className="h-1 w-32 bg-gradient-to-r from-green-500 to-green-600 rounded mb-4"></div>
+        </div>
+        <div className="container mx-auto py-16 px-6 text-center">
+          <FaStore className="mx-auto mb-4 text-6xl text-green-500" />
+          <h2 className="text-4xl font-extrabold text-gray-700 mb-2">
+            Belum ada produk UMKM untuk saat ini.
+          </h2>
+          <p className="text-lg text-gray-500">
+            Silakan cek kembali nanti untuk produk-produk terbaru.
+          </p>
         </div>
       </section>
     );
@@ -34,13 +33,13 @@ export default function VillageMarket() {
     <section className="py-16 bg-gray-100">
       <div className="container mx-auto px-6">
         <div className="mb-12">
-          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-600">
+          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-green-600">
             UMKM Desa Kami
           </h2>
           <p className="text-lg text-gray-700 max-w-3xl mb-2">
             Temukan berbagai usaha mikro, kecil, dan menengah di desa kami. Dukung mereka dengan membeli produk lokal yang unik dan berkualitas!
           </p>
-          <div className="h-1 w-32 bg-gradient-to-r from-blue-500 to-purple-600 rounded mb-4"></div>
+          <div className="h-1 w-32 bg-gradient-to-r from-green-500 to-green-600 rounded mb-4"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

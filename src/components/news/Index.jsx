@@ -1,65 +1,29 @@
+import { BiCalendar } from 'react-icons/bi';
 import defaultImg from '../../assets/default.jpg';
-import { useVillageNews } from '../../hooks/useAPI';
 
-const defaultNewsItems = [
-  {
-    id: 1,
-    title: "Default Berita",
-    date: "1 September 2024",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tincidunt, eros vel fringilla bibendum, nulla sapien fermentum odio.",
-    imgSrc: defaultImg
-  },
-  {
-    id: 2,
-    title: "Default Berita",
-    date: "2 September 2024",
-    description: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    imgSrc: defaultImg
-  },
-  {
-    id: 3,
-    title: "Default Berita",
-    date: "3 September 2024",
-    description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
-    imgSrc: defaultImg
-  },
-  {
-    id: 4,
-    title: "Default Berita",
-    date: "1 September 2024",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tincidunt, eros vel fringilla bibendum, nulla sapien fermentum odio.",
-    imgSrc: defaultImg
-  },
-  {
-    id: 5,
-    title: "Judul Berita 2",
-    date: "2 September 2024",
-    description: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    imgSrc: defaultImg
-  },
-  {
-    id: 6,
-    title: "Default Berita",
-    date: "3 September 2024",
-    description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
-    imgSrc: defaultImg
-  }
-];
+export default function News({data}) {
 
-export default function News() {
-  const { news, loading, error } = useVillageNews();
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
-  
-  if (!news || news.length === 0) {
+  if (!data || data.length === 0) {
     return (
-      <section className="py-12 bg-gray-50">
+      <section className="h-screen py-12 bg-gray-50">
         <div className="container mx-auto px-6">
-          <div className="text-center">
-            <h2 className="text-4xl font-extrabold text-gray-700">
-              Tidak ada berita untuk saat ini.
+          <div className="mb-12">
+            <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-green-600">
+              Berita Desa Kami
             </h2>
+            <p className="text-xl font-medium text-gray-700 italic mb-2">
+              Ikuti perkembangan terbaru dan berita penting dari desa kami.
+            </p>
+            <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-green-600 rounded-full mb-4"></div>
+          </div>
+          <div className="text-center py-16">
+            <BiCalendar className="mx-auto mb-4 text-6xl text-green-500" />
+            <h2 className="text-4xl font-extrabold text-gray-700 mb-2">
+              Belum ada berita untuk saat ini.
+            </h2>
+            <p className="text-lg text-gray-500">
+              Silakan cek kembali nanti untuk berita terbaru.
+            </p>
           </div>
         </div>
       </section>
@@ -70,17 +34,17 @@ export default function News() {
     <section className="py-12 bg-gray-50">
       <div className="container mx-auto px-6">
         <div className="mb-12">
-          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-600">
+          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-green-600">
             Berita Desa Kami
           </h2>
           <p className="text-xl font-medium text-gray-700 italic mb-2">
             Ikuti perkembangan terbaru dan berita penting dari desa kami.
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mb-2"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-green-600 rounded-full mb-2"></div>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {news.map((item, index) => (
+          {data.map((item, index) => (
             <div key={index} className="bg-white shadow-lg rounded-lg overflow-hidden">
               <img
                 className="w-full h-48 object-cover"

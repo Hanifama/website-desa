@@ -1,41 +1,50 @@
 import { useRef } from 'react';
-import Apparatus from "../../components/aparatus/Index";
-import Footer from "../../components/footer";
-import Header from "../../components/header";
-import Navbar from "../../components/navbar/Index";
-import News from "../../components/news/Index";
-import Stastistic from "../../components/stastistic/Index";
-import VillageActivities from "../../components/villageActivities/Index";
-import VillageArea from "../../components/villageArea";
-import VillageMarket from "../../components/villageMarket/Index";
-import WebsiteOverview from "../../components/webOverview/Index";
+import Navbar from '../../components/navbar/Index';
+import WebsiteOverview from '../../components/overview/WebOverview';
+import Apparatus from '../../components/aparatus/Index';
+import News from '../../components/news/Index';
+import VillageMarket from '../../components/villageMarket/Index';
+import VillageActivities from '../../components/villageActivities/Index';
+import Footer from '../../components/footer';
+import VillageMap from '../../components/villageArea';
+import Header from '../../components/header';
 import BackToTop from '../../components/_shared/backToTop';
-
+import { useVillageActivities, useVillageNews, useVillageProfile, useVillageUMKM } from '../../hooks/useAPI';
+import Loader from '../../components/_shared/loader';
 
 export default function LandingPage() {
-  const homeRef = useRef(null);
-  const apparatusRef = useRef(null);
-  const newsRef = useRef(null);
-  const marketRef = useRef(null);
-  const activitiesRef = useRef(null);
+  const { profile, aparattus, boundaryData, loading, error } = useVillageProfile();
+  const { news } = useVillageNews();  
+  const { produkUMKM } = useVillageUMKM();
+  const { activities } = useVillageActivities();
+  
+  const refs = {
+    homeRef: useRef(null),
+    apparatusRef: useRef(null),
+    newsRef: useRef(null),
+    marketRef: useRef(null),
+    activitiesRef: useRef(null),
+  };
 
   const scrollToSection = (sectionRef) => {
     sectionRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
+  if (loading) return <Loader />;
+  if (error) return <div>{error}</div>;
+
   return (
     <>
-      <Navbar scrollToSection={scrollToSection} refs={{ homeRef, apparatusRef, newsRef, marketRef, activitiesRef }} />
-      <div ref={homeRef}><Header /></div>
-      <Stastistic />
+      <Navbar data={profile} scrollToSection={scrollToSection} refs={refs} />
+      <div ref={refs.homeRef}><Header data={profile} /></div>
       <WebsiteOverview />
-      <div ref={apparatusRef}><Apparatus /></div>
-      <div ref={newsRef}><News /></div>
-      <div ref={marketRef}><VillageMarket /></div>
-      <div ref={activitiesRef}><VillageActivities /></div>
-      <VillageArea />
-      <Footer scrollToSection={scrollToSection} refs={{ homeRef, apparatusRef, newsRef, marketRef, activitiesRef }} />
-      <BackToTop /> 
+      <div ref={refs.apparatusRef}><Apparatus data={aparattus} /></div>
+      <div ref={refs.newsRef}><News data={news} /></div>
+      <div ref={refs.marketRef}><VillageMarket data={produkUMKM} /></div>
+      <div ref={refs.activitiesRef}><VillageActivities data={activities} /></div>
+      <VillageMap dataProfile={profile} dataMap={boundaryData} />
+      <Footer data={profile} scrollToSection={scrollToSection} refs={refs} />
+      <BackToTop />
     </>
   );
 }

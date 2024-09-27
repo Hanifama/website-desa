@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchVillageActivities, fetchVillageNews, fetchVillageUMKM } from "../../helpers/service";
+import { FaLeaf, FaHome, FaChartBar } from 'react-icons/fa';
+import Loader from "../_shared/loader";
 
 export default function Statistic() {
     const [statistics, setStatistics] = useState({
@@ -66,27 +68,35 @@ export default function Statistic() {
         }
     }, [loading]);
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <p>Mohon Tunggu..</p>;
     if (error) return <p>{error}</p>;
 
     return (
-        <section className="flex flex-col items-center p-24 space-y-8">
-            <div className="flex gap-8 items-center justify-center">
-                <div className="flex flex-col items-center justify-center gap-4">
-                    <h4 className="text-4xl font-semibold text-primary-color mb-2">{displayedStatistics.berita}</h4>
-                    <p className="text-xl text-dark">Berita dan Informasi</p>
+        <div className="info-cards mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-8">
+            <div className="bg-[#f1f8e9] shadow-md rounded-lg p-6 flex flex-col items-center w-full">
+                <FaLeaf className="text-4xl mb-2 text-[#b95f30]" />
+                <div className="flex items-center">
+                    <h4 className="text-xl font-semibold text-primary-color mb-0 mr-2">{displayedStatistics.berita}</h4>
+                    <h3 className="text-xl font-semibold text-[#4a3f3f]">Berita dan Informasi</h3>
                 </div>
-                <div className="border-l border-gray-300 h-24"></div>
-                <div className="flex flex-col items-center justify-center gap-4">
-                    <h4 className="text-4xl font-semibold text-primary-color mb-2">{displayedStatistics.umkm}</h4>
-                    <p className="text-xl text-dark">UMKM Desa</p>
-                </div>
-                <div className="border-l border-gray-300 h-24"></div>
-                <div className="flex flex-col items-center justify-center gap-4">
-                    <h4 className="text-4xl font-semibold text-primary-color mb-2">{displayedStatistics.kegiatan}</h4>
-                    <p className="text-xl text-dark">Kegiatan dan Acara</p>
-                </div>
+                <p className="text-gray-600">Informasi mengenai kegiatan terbaru di desa.</p>
             </div>
-        </section>
+            <div className="bg-[#f1f8e9] shadow-md rounded-lg p-6 flex flex-col items-center w-full">
+                <FaHome className="text-4xl mb-2 text-[#b95f30]" />
+                <div className="flex items-center">
+                    <h4 className="text-xl font-semibold text-primary-color mb-0 mr-2">{displayedStatistics.umkm}</h4>
+                    <h3 className="text-xl font-semibold text-[#4a3f3f]">UMKM Desa</h3>
+                </div>
+                <p className="text-gray-600">Data statistik penduduk dan ekonomi desa.</p>
+            </div>
+            <div className="bg-[#f1f8e9] shadow-md rounded-lg p-6 flex flex-col items-center w-full">
+                <FaChartBar className="text-4xl mb-2 text-[#b95f30]" />
+                <div className="flex items-center">
+                    <h4 className="text-xl font-semibold text-primary-color mb-0 mr-2">{displayedStatistics.kegiatan}</h4>
+                    <h3 className="text-xl font-semibold text-[#4a3f3f]">Kegiatan dan Acara</h3>
+                </div>
+                <p className="text-gray-600">Gambar-gambar menarik dari desa.</p>
+            </div>
+        </div>
     );
 }

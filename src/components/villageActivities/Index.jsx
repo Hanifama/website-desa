@@ -1,58 +1,28 @@
-import { useVillageActivities } from '../../hooks/useAPI';
+import { FaCalendarAlt } from 'react-icons/fa';
 
-const defaultActivities = [
-  // {
-  //   id: 1,
-  //   name: "Gotong Royong Bersih Desa",
-  //   description: "Bersama-sama membersihkan lingkungan desa untuk menjaga kebersihan dan kenyamanan.",
-  //   imgSrc: defaultImg
-  // },
-  // {
-  //   id: 2,
-  //   name: "Pelatihan Keterampilan",
-  //   description: "Mengembangkan keterampilan warga melalui pelatihan dan workshop.",
-  //   imgSrc: defaultImg
-  // },
-  // {
-  //   id: 3,
-  //   name: "Pasar Malam Desa",
-  //   description: "Nikmati suasana pasar malam dengan berbagai kuliner dan hiburan.",
-  //   imgSrc: defaultImg
-  // },
-  // {
-  //   id: 4,
-  //   name: "Senam Pagi Bersama",
-  //   description: "Aktivitas olahraga bersama untuk kesehatan dan kebersamaan warga.",
-  //   imgSrc: defaultImg
-  // },
-  // {
-  //   id: 5,
-  //   name: "Festival Budaya Desa",
-  //   description: "Merayakan budaya lokal dengan pertunjukan seni dan makanan tradisional.",
-  //   imgSrc: defaultImg
-  // },
-  // {
-  //   id: 6,
-  //   name: "Pertandingan Olahraga Desa",
-  //   description: "Kompetisi olahraga untuk memupuk semangat sportivitas antarwarga.",
-  //   imgSrc: defaultImg
-  // }
-];
-
-export default function VillageActivities() {
-  const { activities, loading, error } = useVillageActivities();
-  const activitiesData = activities || [];
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+export default function VillageActivities({data}) {
+  const activitiesData = data || [];
 
   if (activitiesData.length === 0) {
     return (
-      <section className="py-16 bg-gray-100">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-extrabold text-gray-700">
-            Tidak ada kegiatan untuk saat ini.
+      <section className="h-screen py-16 bg-gray-100">
+        <div className="container mx-auto px-6 mb-12">
+          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-green-600 mb-2">
+            Kegiatan Desa Kami
           </h2>
+          <p className="text-xl font-medium text-gray-700 italic mb-2">
+            Ikuti berbagai kegiatan seru dan bermanfaat yang diselenggarakan di desa kami.
+          </p>
+          <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-green-600 rounded-full mb-4"></div>
+        </div>
+        <div className="container mx-auto py-16 px-6 text-center">
+          <FaCalendarAlt className="mx-auto mb-4 text-6xl text-green-500" />
+          <h2 className="text-4xl font-extrabold text-gray-700 mb-2">
+            Belum ada kegiatan untuk saat ini.
+          </h2>
+          <p className="text-lg text-gray-500">
+            Silakan cek kembali nanti untuk informasi tentang kegiatan terbaru.
+          </p>
         </div>
       </section>
     );
@@ -62,13 +32,13 @@ export default function VillageActivities() {
     <section className="py-16 bg-gray-100">
       <div className="container mx-auto px-6">
         <div className="mb-12">
-          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-600">
+          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-green-600">
             Kegiatan Desa Kami
           </h2>
           <p className="text-xl font-medium text-gray-700 italic mb-2">
             Ikuti berbagai kegiatan seru dan bermanfaat yang diselenggarakan di desa kami.
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full mb-2"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-green-600 rounded-full mb-2"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">

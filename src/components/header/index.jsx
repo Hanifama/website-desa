@@ -1,12 +1,7 @@
-import { useVillageProfile } from '../../hooks/useAPI';
 import defaultImg from '../../assets/default.jpg';
-import Loader from '../_shared/loader';
+import Statistic from '../stastistic/Index';
 
-export default function Header() {
-  const { profile, loading, error } = useVillageProfile();
-
-  if (loading) return <div><Loader/></div>;
-  if (error) return <div>{error}</div>;
+export default function Header({data}) {
 
   const defaultProfile = {
     province: 'Default Province',
@@ -17,49 +12,41 @@ export default function Header() {
     office: defaultImg,
   };
 
-  const profileData = profile || defaultProfile;
+  const profileData = data || defaultProfile;
 
   const handleImageError = (event) => {
     event.target.src = defaultImg;
   };
 
   return (
-    <div className="container min-w-full h-screen pt-28 bg-gradient-to-r from-[#1e3a5f] via-[#2c4a77] to-[#3b5a8c]">
-      <div className="outer-container flex">
-        <div className="container__right min-w-[950px] flex-2 bg-gradient-to-r from-[#2c4a77] via-[#3b5a8c] to-[#5a7ea5] p-8 flex ml-8 rounded-lg shadow-xl animate-openFromCenter">
-          <div className="content flex-1 text-left space-y-4 pr-8 opacity-0 animate-fadeInText">
-            <h4 className="text-lg font-semibold text-[#f4c430] uppercase tracking-wide">
+    <div className="container min-w-full h-auto py-20 pt-28 bg-gradient-to-r from-[#e0f7fa] to-[#ffffff]">
+      <div className="outer-container flex flex-col md:flex-row justify-center items-center md:items-start w-full">
+        <div className="container__right flex flex-col md:flex-row p-6 md:p-8 w-full">          
+          <div className="content flex-1 text-left space-y-2 pr-8">
+            <h4 className="text-lg font-semibold text-[#b95f30] uppercase tracking-wide">
               {profileData.province} - {profileData.district}
             </h4>
-            <h2 className="text-4xl font-extrabold text-[#ffffff] leading-tight relative">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-[#4a3f3f] leading-tight relative">
               {profileData.name}
-              <span className="absolute bottom-0 left-0 w-12 h-1 bg-[#f4c430]"></span>
+              <span className="absolute top-10 md:top-12 left-0 w-12 h-1 bg-[#b95f30]"></span>
             </h2>
-            <h3 className="text-xl font-medium text-[#e5e7eb] mb-2">
-              {/* Desa {profileData.village} */}
-            </h3>
-            <p className="leading-relaxed text-[#e5e7eb] max-w-md text-justify">
-              {/* {profileData.village} Adalah sebuah kecamatan {profileData.address} */}
-              {/* {profileData.district} - {profileData.subdistrict} */}
+            <p className="leading-relaxed text-[#5a5a5a] max-w-md">
+              Desa {profileData.village}
             </p>
           </div>
 
-          <div className="images relative flex items-center justify-center h-[400px] opacity-0 animate-fadeInImages">
+          <div className="images relative flex flex-col md:flex-row items-center justify-center h-auto">
             <img
               src={profileData.banner ? `https://bucket-2.nos.wjv-1.neo.id/${profileData.banner}` : defaultProfile.banner}
-              alt="Pemandangan Desa Image"
+              alt="Pemandangan Desa"
               onError={handleImageError}
-              className="tent-1 absolute top-1/2 transform -translate-y-1/2 translate-x-12 max-h-[400px] max-w-[350px] rounded-lg shadow-2xl border border-[#f4c430] transition-transform duration-300 hover:scale-105"
-            />
-            <img
-              src={profileData.office ? `https://bucket-2.nos.wjv-1.neo.id/${profileData.office}` : defaultProfile.office}
-              alt="Balai Desa"
-              onError={handleImageError}
-              className="tent-2 absolute top-1/2 transform translate-y-1/2 translate-x-1/2 max-w-[180px] rounded-lg shadow-lg border border-[#f4c430] transition-transform duration-300 hover:scale-105"
+              className="relative max-h-[400px] max-w-full md:max-w-[400px] rounded-lg shadow-md border border-[#b95f30] transition-transform duration-300 hover:scale-105 mb-4 md:mb-0 md:mr-4"
             />
           </div>
         </div>
       </div>
+
+      <Statistic />
     </div>
   );
 }

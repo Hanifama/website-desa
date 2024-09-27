@@ -1,168 +1,112 @@
 import { useState } from "react";
-import { useVillageProfile } from "../../hooks/useAPI";
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
+import { RiMenuLine, RiCloseLine } from "react-icons/ri"; 
 import defaultLogo from '../../assets/defaultLogo.jpg';
 
-export default function Navbar({ scrollToSection, refs }) {
+export default function Navbar({ data, scrollToSection, refs }) {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { profile, loading, error } = useVillageProfile();
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
   };
 
   const handleImageError = (event) => {
     event.target.src = defaultLogo;
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  const navLinks = [
+    { name: "Home", ref: refs.homeRef },
+    { name: "Aparat Desa", ref: refs.apparatusRef },
+    { name: "Berita Desa", ref: refs.newsRef },
+    { name: "UMKM Desa", ref: refs.marketRef },
+    { name: "Kegiatan Desa", ref: refs.activitiesRef }
+  ];
 
   return (
-    <nav className="bg-[#1e3a5f] text-white p-4 shadow-md fixed top-0 left-0 w-full z-50 animate-fadeIn">
+    <nav className="bg-[#2f855a] text-white p-4 shadow-md fixed top-0 left-0 w-full z-50 animate-fadeIn">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-2xl font-bold flex items-center space-x-4">
           <Link to="/" className="flex items-center hover:text-gray-200">
             <img
-              src={profile.logo ? `https://bucket-2.nos.wjv-1.neo.id/${profile.logo}` : defaultLogo}
+              src={data.logo ? `https://bucket-2.nos.wjv-1.neo.id/${data.logo}` : defaultLogo}
               alt="Logo Instansi"
               className="w-12 h-12 object-cover"
               onError={handleImageError}
             />
             <div className="flex flex-col ml-2">
-              <span className="text-xl">{profile.name || 'Default Name'}</span>
-              <span className="text-sm">{profile.district || 'Default District'}</span>
+              <span className="text-lg">{data.name || 'Default Name'}</span>
+              <span className="text-sm">{data.district || 'Default District'}</span>
             </div>
           </Link>
         </div>
 
         <ul className="hidden md:flex space-x-6 px-10">
-          <li>
-            <button
-              onClick={() => scrollToSection(refs.homeRef)}
-              className="hover:text-[#f4c430] transition duration-300 ease-in-out transform hover:scale-105"
-            >
-              Home
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => scrollToSection(refs.apparatusRef)}
-              className="hover:text-[#f4c430] transition duration-300 ease-in-out transform hover:scale-105"
-            >
-              Aparat Desa
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => scrollToSection(refs.newsRef)}
-              className="hover:text-[#f4c430] transition duration-300 ease-in-out transform hover:scale-105"
-            >
-              Berita Desa
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => scrollToSection(refs.marketRef)}
-              className="hover:text-[#f4c430] transition duration-300 ease-in-out transform hover:scale-105"
-            >
-              UMKM Desa
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => scrollToSection(refs.activitiesRef)}
-              className="hover:text-[#f4c430] transition duration-300 ease-in-out transform hover:scale-105"
-            >
-              Kegiatan Desa
-            </button>
-          </li>
+          {navLinks.map((link, index) => (
+            <li key={index}>
+              <Link
+                to={`#${link.name.toLowerCase().replace(" ", "")}`}
+                onClick={() => scrollToSection(link.ref)}
+                className="hover:text-[#f4c430] transition duration-300 ease-in-out transform hover:scale-105"
+              >
+                {link.name}
+              </Link>
+            </li>
+          ))}
         </ul>
 
         <div className="hidden md:block">
-          <Link to="https://kawal-desa.pptik.id/login">
-            <button className="bg-[#f4c430] text-[#1e3a5f] px-4 py-2 rounded-lg font-semibold hover:bg-[#e0b728] transition-colors duration-300">
+          <a href="https://kawal-desa.pptik.id/login">
+            <button className="bg-[#f4c430] text-[#2f855a] px-4 py-2 rounded-lg font-semibold hover:bg-[#e0b728] transition-colors duration-300">
               Login
             </button>
-          </Link>
+          </a>
         </div>
 
         <div className="md:hidden">
           <button onClick={toggleMobileMenu} className="text-2xl text-[#f4c430]">
-            <i className="ri-menu-line"></i>
+            {isMobileMenuOpen ? <RiCloseLine /> : <RiMenuLine />}
           </button>
         </div>
       </div>
 
-      <div className={`md:hidden mt-4 space-y-2 ${isMobileMenuOpen ? "block" : "hidden"}`}>
-        <ul className="flex flex-col space-y-2">
-          <li>
-            <button
-              onClick={() => {
-                toggleMobileMenu();
-                scrollToSection(refs.homeRef);
-              }}
-              className="block py-2 px-4 bg-[#2c4a77] text-white rounded hover:bg-[#3b5a8c] transition-colors duration-300 transform hover:scale-105"
-            >
-              Home
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => {
-                toggleMobileMenu();
-                scrollToSection(refs.apparatusRef);
-              }}
-              className="block py-2 px-4 bg-[#2c4a77] text-white rounded hover:bg-[#3b5a8c] transition-colors duration-300 transform hover:scale-105"
-            >
-              Aparat Desa
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => {
-                toggleMobileMenu();
-                scrollToSection(refs.newsRef);
-              }}
-              className="block py-2 px-4 bg-[#2c4a77] text-white rounded hover:bg-[#3b5a8c] transition-colors duration-300 transform hover:scale-105"
-            >
-              Berita Desa
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => {
-                toggleMobileMenu();
-                scrollToSection(refs.marketRef);
-              }}
-              className="block py-2 px-4 bg-[#2c4a77] text-white rounded hover:bg-[#3b5a8c] transition-colors duration-300 transform hover:scale-105"
-            >
-              UMKM Desa
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => {
-                toggleMobileMenu();
-                scrollToSection(refs.activitiesRef);
-              }}
-              className="block py-2 px-4 bg-[#2c4a77] text-white rounded hover:bg-[#3b5a8c] transition-colors duration-300 transform hover:scale-105"
-            >
-              Kegiatan Desa
-            </button>
-          </li>
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 bg-black opacity-50 z-40" onClick={closeMobileMenu}></div>
+      )}
+
+      <div
+        className={`fixed top-0 left-0 h-full w-64 bg-[#2f855a] p-4 z-50 transform ${
+          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+        } transition-transform duration-300 ease-in-out`}
+      >
+        <ul className="flex flex-col space-y-4">
+          {navLinks.map((link, index) => (
+            <li key={index}>
+              <Link
+                to={`#${link.name.toLowerCase().replace(" ", "")}`}
+                onClick={() => {
+                  scrollToSection(link.ref);
+                  closeMobileMenu();
+                }}
+                className="block py-2 px-4 text-white rounded hover:bg-[#0f3d26] transition-colors duration-300 transform hover:scale-105"
+              >
+                {link.name}
+              </Link>
+            </li>
+          ))}
         </ul>
 
-        <div className="mt-2">
-          <Link to="https://kawal-desa.pptik.id/login">
-            <button className="w-full py-2 bg-[#f4c430] text-[#1e3a5f] rounded-lg font-semibold hover:bg-[#e0b728] transition-colors duration-300">
+        <div className="mt-4">
+          <a href="https://kawal-desa.pptik.id/login">
+            <button className="w-full py-2 bg-[#f4c430] text-[#2f855a] rounded-lg font-semibold hover:bg-[#e0b728] transition-colors duration-300">
               Login
             </button>
-          </Link>
+          </a>
         </div>
       </div>
     </nav>
   );
 }
-
