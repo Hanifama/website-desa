@@ -1,14 +1,9 @@
 import React from 'react';
 import headerBg from '../../assets/header-bg.png';
 import defaultImg from '../../assets/tent-1.jpg';
-import { useVillageProfile } from '../../hooks/useAPI';
-import Loader from '../_shared/loader';
 
-export default function Header() {
-  const { profile, loading, error } = useVillageProfile();
 
-  if (loading) return <div><Loader/></div>;
-  if (error) return <div>{error}</div>;
+export default function Header({data}) {
 
   const defaultProfile = {
     province: 'Default Province',
@@ -19,7 +14,7 @@ export default function Header() {
     office: defaultImg,
   };
 
-  const profileData = profile || defaultProfile;
+  const profileData = data || defaultProfile;
 
   const handleImageError = (event) => {
     event.target.src = defaultImg;
@@ -31,11 +26,11 @@ export default function Header() {
       style={{ backgroundImage: `url(${headerBg})` }}
     >
       <div
-        className="relative isolate overflow-hidden pt-20 h-[90vh] flex items-center justify-between px-6"
+        className="relative isolate overflow-hidden pt-20 lg:h-[90vh] flex flex-col lg:flex-row items-center justify-between px-6 lg:px-12"
         id="home"
       >
-        <div className="flex-1 max-w-xl flex flex-col items-center lg:items-start text-center lg:text-left px-6 lg:px-12 z-10">
-          <h1 className="text-3xl lg:text-2xl font-semibold text-gray-800 mb-2 relative">
+        <div className="flex-1 max-w-xl flex flex-col items-center lg:items-start text-left lg:text-left py-6 px-6 lg:px-12 z-10">
+          <h1 className="text-sm lg:text-2xl font-semibold text-gray-800 mb-2 relative">
             {profileData.province} - {profileData.district}
           </h1>
 
@@ -47,31 +42,30 @@ export default function Header() {
           <p className="text-sm font-semibold text-gray-800 mb-2 relative inline-block">
             Desa {profileData.village}
           </p>
-
-          <p className="text-base lg:text-lg text-gray-700 mb-6 leading-relaxed">
-          {/* {profileData.village} Adalah sebuah kecamatan  {profileData.address} */}
-          </p>
         </div>
 
-        <div className="relative flex-1 max-w-md flex items-center justify-center z-0 bg-red-600">
-          <div className="w-full h-[400px] relative overflow-hidden rounded-lg shadow-lg border-2 border-gray-200">
+        <div className="relative flex-1 max-w-md flex items-center justify-center z-0">          
+          <div className="hidden lg:block absolute inset-0 bg-red-600 z-0"></div>
+
+          <div className="w-[600px] h-[400px] relative overflow-hidden rounded-lg shadow-lg border-2 border-gray-200">
             <img
               src={profileData.banner ? `https://bucket-2.nos.wjv-1.neo.id/${profileData.banner}` : defaultProfile.banner}
               alt="Pemandangan Desa Image"
-              className="absolute inset-0 w-full h-full object-cover"
-              onError={handleImageError} 
+              className="absolute inset-0 w-full p-10 lg:p-0 h-full object-cover"
+              onError={handleImageError}
             />
           </div>
 
-          <div className="absolute bottom-[-60px] left-[20px] w-[100px] h-auto overflow-hidden rounded-lg shadow-lg border-2 border-gray-200 transform -translate-y-1/4">
+          <div className="absolute w-[100px] bottom-[-1px] right-12 lg:bottom-[-60px] lg:left-[20px] lg:w-[100px] lg:h-auto overflow-hidden rounded-lg shadow-lg border-2 border-gray-200 transform -translate-y-1/4">
             <img
               src={profileData.office ? `https://bucket-2.nos.wjv-1.neo.id/${profileData.office}` : defaultProfile.office}
               alt="Balai Desa"
               className="w-full h-auto object-cover"
-              onError={handleImageError} 
+              onError={handleImageError}
             />
           </div>
         </div>
+
       </div>
 
       <div
