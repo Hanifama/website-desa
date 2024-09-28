@@ -31,11 +31,8 @@ export default function Header({data}) {
               <span className="absolute bottom-0 left-0 w-12 h-1 bg-[#f4c430]"></span>
             </h2>
             <h3 className="text-xl font-medium text-[#e5e7eb] mb-2">
-              {profileData.village || 'Village Not Available'}
-            </h3>
-            <p className="leading-relaxed text-[#e5e7eb] max-w-md text-justify">
-              {profileData.address || 'Address Not Available'}
-            </p>
+              Desa {profileData.village || 'Village Not Available'}
+            </h3>           
           </div>
 
           <div className="images relative flex items-center justify-center h-[400px] opacity-0 animate-fadeInImages">
