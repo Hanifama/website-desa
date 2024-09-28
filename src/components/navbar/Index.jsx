@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useVillagedata } from "../../hooks/useAPI";
 import { Link } from 'react-router-dom';
 import { FiMenu, FiHome, FiUser, FiBell, FiBriefcase, FiClipboard } from "react-icons/fi";
 import defaultLogo from '../../assets/defaultLogo.jpg';

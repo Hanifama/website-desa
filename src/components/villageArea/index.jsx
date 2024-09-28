@@ -27,7 +27,7 @@ export default function VillageMap({dataProfile, dataMap}) {
     <section className="py-16 px-4 bg-gray-100">
       <div className="container mx-auto px-6">
         <div className="mb-12 text-center">
-          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">
+          <h2 className="text-2xl lg:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">
             Wilayah Desa Kami
           </h2>
           <p className="text-xl font-medium text-gray-700 italic mb-2">
