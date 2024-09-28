@@ -1,11 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useVillageProfile } from '../../hooks/useAPI';
+import { useEffect, useRef, useState } from 'react';
 import defaultAparat from '../../assets/user.jpeg';
 
-export default function Apparatus() {
+export default function Apparatus({data}) {
   const scrollContainerRef = useRef(null);
   const [scrollSpeed, setScrollSpeed] = useState(3);
-  const { aparattus, loading, error } = useVillageProfile();
 
   useEffect(() => {
     const container = scrollContainerRef.current;
@@ -27,10 +25,7 @@ export default function Apparatus() {
     }
   }, [scrollSpeed]);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
-
-  const apparatuses = aparattus || [];
+  const apparatuses = data || [];
 
   const duplicatedApparatuses = [...apparatuses, ...apparatuses];
 

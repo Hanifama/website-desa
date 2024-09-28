@@ -1,50 +1,8 @@
 import { useVillageActivities } from '../../hooks/useAPI';
 
-const defaultActivities = [
-  // {
-  //   id: 1,
-  //   name: "Gotong Royong Bersih Desa",
-  //   description: "Bersama-sama membersihkan lingkungan desa untuk menjaga kebersihan dan kenyamanan.",
-  //   imgSrc: defaultImg
-  // },
-  // {
-  //   id: 2,
-  //   name: "Pelatihan Keterampilan",
-  //   description: "Mengembangkan keterampilan warga melalui pelatihan dan workshop.",
-  //   imgSrc: defaultImg
-  // },
-  // {
-  //   id: 3,
-  //   name: "Pasar Malam Desa",
-  //   description: "Nikmati suasana pasar malam dengan berbagai kuliner dan hiburan.",
-  //   imgSrc: defaultImg
-  // },
-  // {
-  //   id: 4,
-  //   name: "Senam Pagi Bersama",
-  //   description: "Aktivitas olahraga bersama untuk kesehatan dan kebersamaan warga.",
-  //   imgSrc: defaultImg
-  // },
-  // {
-  //   id: 5,
-  //   name: "Festival Budaya Desa",
-  //   description: "Merayakan budaya lokal dengan pertunjukan seni dan makanan tradisional.",
-  //   imgSrc: defaultImg
-  // },
-  // {
-  //   id: 6,
-  //   name: "Pertandingan Olahraga Desa",
-  //   description: "Kompetisi olahraga untuk memupuk semangat sportivitas antarwarga.",
-  //   imgSrc: defaultImg
-  // }
-];
 
-export default function VillageActivities() {
-  const { activities, loading, error } = useVillageActivities();
-  const activitiesData = activities || [];
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+export default function VillageActivities({data}) {  
+  const activitiesData = data || [];
 
   if (activitiesData.length === 0) {
     return (

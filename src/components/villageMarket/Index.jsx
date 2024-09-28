@@ -1,22 +1,8 @@
 import defaultImg from '../../assets/default.jpg';
-import { useVillageUMKM } from '../../hooks/useAPI';
 
-const defaultUMKMItems = [
-  { id: 1, name: "Default UMKM", description: "Produk makanan ringan khas desa yang lezat dan sehat.", imgSrc: defaultImg },
-  { id: 2, name: "Default UMKM", description: "Kerajinan tangan unik dengan sentuhan lokal yang autentik.", imgSrc: defaultImg },
-  { id: 3, name: "Default UMKM", description: "Produk fashion tradisional yang nyaman dan stylish.", imgSrc: defaultImg },
-  { id: 4, name: "Default UMKM", description: "Aneka produk lokal berkualitas dari desa kami.", imgSrc: defaultImg },
-  { id: 5, name: "Default UMKM", description: "Produk lokal yang inovatif dan menarik dari desa kami.", imgSrc: defaultImg },
-  { id: 6, name: "Default UMKM", description: "Produk kerajinan tangan yang mempesona dan berkualitas.", imgSrc: defaultImg },
-  { id: 7, name: "Default UMKM", description: "Aneka produk lokal dengan desain yang menarik dan berkualitas.", imgSrc: defaultImg }
-];
+export default function VillageMarket({data}) {  
+  const dataProdukUMKM = data || [];
 
-export default function VillageMarket() {
-  const { produkUMKM, loading, error } = useVillageUMKM();
-  const dataProdukUMKM = produkUMKM || [];
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
   
   if (dataProdukUMKM.length === 0) {
     return (

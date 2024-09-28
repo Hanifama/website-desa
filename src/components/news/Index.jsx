@@ -1,58 +1,9 @@
 import defaultImg from '../../assets/default.jpg';
-import { useVillageNews } from '../../hooks/useAPI';
 
-const defaultNewsItems = [
-  {
-    id: 1,
-    title: "Default Berita",
-    date: "1 September 2024",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tincidunt, eros vel fringilla bibendum, nulla sapien fermentum odio.",
-    imgSrc: defaultImg
-  },
-  {
-    id: 2,
-    title: "Default Berita",
-    date: "2 September 2024",
-    description: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    imgSrc: defaultImg
-  },
-  {
-    id: 3,
-    title: "Default Berita",
-    date: "3 September 2024",
-    description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
-    imgSrc: defaultImg
-  },
-  {
-    id: 4,
-    title: "Default Berita",
-    date: "1 September 2024",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tincidunt, eros vel fringilla bibendum, nulla sapien fermentum odio.",
-    imgSrc: defaultImg
-  },
-  {
-    id: 5,
-    title: "Judul Berita 2",
-    date: "2 September 2024",
-    description: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    imgSrc: defaultImg
-  },
-  {
-    id: 6,
-    title: "Default Berita",
-    date: "3 September 2024",
-    description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
-    imgSrc: defaultImg
-  }
-];
 
-export default function News() {
-  const { news, loading, error } = useVillageNews();
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+export default function News({data}) {
   
-  if (!news || news.length === 0) {
+  if (!data || data.length === 0) {
     return (
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-6">
@@ -80,7 +31,7 @@ export default function News() {
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {news.map((item, index) => (
+          {data.map((item, index) => (
             <div key={index} className="bg-white shadow-lg rounded-lg overflow-hidden">
               <img
                 className="w-full h-48 object-cover"
