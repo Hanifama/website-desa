@@ -22,7 +22,7 @@ export default function Navbar({ data, scrollToSection, refs }) {
     { name: "Home", ref: refs.homeRef },
     { name: "Aparat Desa", ref: refs.apparatusRef },
     { name: "Berita Desa", ref: refs.newsRef },
-    { name: "UMKM Desa", ref: refs.marketRef },
+    // { name: "UMKM Desa", ref: refs.marketRef },
     { name: "Kegiatan Desa", ref: refs.activitiesRef }
   ];
 

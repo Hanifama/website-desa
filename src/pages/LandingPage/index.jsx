@@ -37,12 +37,12 @@ export default function LandingPage() {
     <>
       <Navbar data={profile} scrollToSection={scrollToSection} refs={refs} />
       <div ref={refs.homeRef}><Header data={profile} /></div>
-      <WebsiteOverview />
+      <WebsiteOverview data={profile}/>
       <div ref={refs.apparatusRef}><Apparatus data={aparattus} /></div>
       <div ref={refs.newsRef}><News data={news} /></div>
-      <div ref={refs.marketRef}><VillageMarket data={produkUMKM} /></div>
+      {/* <div ref={refs.marketRef}><VillageMarket data={produkUMKM} /></div> */}
       <div ref={refs.activitiesRef}><VillageActivities data={activities} /></div>
-      <VillageMap dataProfile={profile} dataMap={boundaryData} />
+      {/* <VillageMap dataProfile={profile} dataMap={boundaryData} /> */}
       <Footer data={profile} scrollToSection={scrollToSection} refs={refs} />
       <BackToTop />
     </>

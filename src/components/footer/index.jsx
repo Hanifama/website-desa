@@ -65,14 +65,14 @@ export default function Footer({ data, scrollToSection, refs }) {
                 </li>
               </ul>
               <ul className="space-y-2">
-                <li>
+                {/* <li>
                   <button 
                     className="hover:text-gray-100 transition duration-300"
                     onClick={() => scrollToSection(refs.marketRef)}
                   >
                     UMKM Desa
                   </button>
-                </li>
+                </li> */}
                 <li>
                   <button 
                     className="hover:text-gray-100 transition duration-300"

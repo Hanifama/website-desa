@@ -46,7 +46,7 @@ export default function Header({data}) {
         </div>
       </div>
 
-      <Statistic />
+      <Statistic data={data}/>
     </div>
   );
 }
