@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import defaultAparat from '../../assets/user.jpeg';
 
-export default function Apparatus({data}) {
+export default function Apparatus({ data }) {
   const scrollContainerRef = useRef(null);
   const [scrollSpeed, setScrollSpeed] = useState(3);
 
@@ -45,9 +45,9 @@ export default function Apparatus({data}) {
           className="flex gap-6 whitespace-nowrap"
           style={{ display: 'flex', flexDirection: 'row', width: 'max-content' }}
         >
-          {duplicatedApparatuses.map((apparatus) => (
+          {duplicatedApparatuses.map((apparatus, index) => (
             <div
-              key={apparatus._id}
+              key={`${apparatus._id}-${index}`}
               className="flex flex-col items-center w-[250px] md:w-[300px] h-[350px] md:h-[400px] shadow-lg p-4 bg-white rounded-lg overflow-hidden"
             >
               <div className="w-full h-[200px] md:h-[300px] flex-shrink-0 mb-4">
@@ -70,12 +70,12 @@ export default function Apparatus({data}) {
       </div>
 
       <div className="flex-1 flex flex-col items-start text-left max-w-4xl">
-        <p className="text-lg font-semibold text-gray-600 mb-2">Aparat Desa</p>
+        <p className="text-lg font-semibold text-gray-600 mb-2">Tim Pelatihan Gajah</p>
         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-          Memperkenalkan <span className="text-primary-color">Aparat Desa</span>
+          Memperkenalkan <span className="text-primary-color">Tim Pelatihan Gajah</span>
         </h2>
         <p className="text-sm md:text-lg text-gray-700 mb-6">
-          Jelajahi inovasi dalam pengelolaan desa melalui aplikasi web desa yang dirancang khusus untuk memenuhi kebutuhan administratif dan komunikasi desa.
+          Jelajahi inovasi dalam pengelolaan kegiatan pelatihan gajah melalui platform digital yang dirancang untuk memenuhi kebutuhan administratif dan meningkatkan kolaborasi tim kami.
         </p>
       </div>
     </section>

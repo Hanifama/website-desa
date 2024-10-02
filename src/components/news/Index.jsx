@@ -25,15 +25,15 @@ export default function News({ data }) {
         <div className="container mx-auto px-6">
           <div className="mb-12 text-left">
             <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-green-600">
-              Berita Desa Kami
+              Berita Kami
             </h2>
             <p className="text-xl font-medium text-gray-700 italic mb-2">
-              Ikuti perkembangan terbaru dan berita penting dari desa kami.
+              Ikuti berita dan perkembangan terbaru dari program konservasi kami
             </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-green-600 rounded-full mb-4 ml-0"></div> 
+            <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-green-600 rounded-full mb-4 ml-0"></div>
           </div>
           <div className="text-left py-16">
-            <BiCalendar className="mb-4 text-6xl text-green-500" /> 
+            <BiCalendar className="mb-4 text-6xl text-green-500" />
             <h2 className="text-4xl font-extrabold text-gray-700 mb-2">
               Belum ada berita untuk saat ini.
             </h2>
@@ -52,12 +52,12 @@ export default function News({ data }) {
       <div className="container mx-auto px-6">
         <div className="mb-12 text-left">
           <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-green-600">
-            Berita Desa Kami
+            Berita Kami
           </h2>
           <p className="text-xl font-medium text-gray-700 italic mb-2">
-            Ikuti perkembangan terbaru dan berita penting dari desa kami.
+            Ikuti berita dan perkembangan terbaru dari program konservasi kami
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-green-600 rounded-full mb-4 ml-0"></div> 
+          <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-green-600 rounded-full mb-4 ml-0"></div>
         </div>
 
 

@@ -28,10 +28,10 @@ export default function Header({data}) {
             </h4>
             <h2 className="text-2xl md:text-5xl font-extrabold text-[#4a3f3f] leading-tight relative">
               {profileData.name}
-              <span className="absolute top-10 md:top-12 left-0 w-12 h-1 bg-[#b95f30]"></span>
+              <span className="absolute top-16 md:top-12 left-0 w-12 h-1 bg-[#b95f30]"></span>
             </h2>
             <p className="leading-relaxed text-[#5a5a5a] max-w-md">
-              {/* Desa {profileData.village} */}
+              {profileData.name} merupakan sekolah gajah pertama di Indonesia, yang diharapkan mampu menjadi pusat konservasi gajah dalam penjinakan, pelatihan, perkembangbiakan dan konservasi. 
             </p>
           </div>
 

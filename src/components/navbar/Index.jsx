@@ -20,10 +20,10 @@ export default function Navbar({ data, scrollToSection, refs }) {
 
   const navLinks = [
     { name: "Home", ref: refs.homeRef },
-    { name: "Aparat Desa", ref: refs.apparatusRef },
-    { name: "Berita Desa", ref: refs.newsRef },
-    // { name: "UMKM Desa", ref: refs.marketRef },
-    { name: "Kegiatan Desa", ref: refs.activitiesRef }
+    { name: "Tim PLG", ref: refs.apparatusRef },
+    { name: "Berita", ref: refs.newsRef },
+    { name: "Kegiatan", ref: refs.activitiesRef },
+    { name: "CCTV TNWK", href: "https://cctv-tnwk.pptik.id/", isExternal: true }
   ];
 
   return (
@@ -44,16 +44,27 @@ export default function Navbar({ data, scrollToSection, refs }) {
           </Link>
         </div>
 
-        <ul className="hidden md:flex space-x-6 px-10">
+        <ul className="hidden md:flex space-x-6 px-2">
           {navLinks.map((link, index) => (
             <li key={index}>
-              <Link
-                to={`#${link.name.toLowerCase().replace(" ", "")}`}
-                onClick={() => scrollToSection(link.ref)}
-                className="hover:text-[#f4c430] transition duration-300 ease-in-out transform hover:scale-105"
-              >
-                {link.name}
-              </Link>
+              {link.isExternal ? (
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#f4c430] transition duration-300 ease-in-out transform hover:scale-105"
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link
+                  to={`#${link.name.toLowerCase().replace(" ", "")}`}
+                  onClick={() => scrollToSection(link.ref)}
+                  className="hover:text-[#f4c430] transition duration-300 ease-in-out transform hover:scale-105"
+                >
+                  {link.name}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
@@ -85,16 +96,28 @@ export default function Navbar({ data, scrollToSection, refs }) {
         <ul className="flex flex-col space-y-4">
           {navLinks.map((link, index) => (
             <li key={index}>
-              <Link
-                to={`#${link.name.toLowerCase().replace(" ", "")}`}
-                onClick={() => {
-                  scrollToSection(link.ref);
-                  closeMobileMenu();
-                }}
-                className="block py-2 px-4 text-white rounded hover:bg-[#0f3d26] transition-colors duration-300 transform hover:scale-105"
-              >
-                {link.name}
-              </Link>
+              {link.isExternal ? (
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block py-2 px-4 text-white rounded hover:bg-[#0f3d26] transition-colors duration-300 transform hover:scale-105"
+                  onClick={closeMobileMenu}
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link
+                  to={`#${link.name.toLowerCase().replace(" ", "")}`}
+                  onClick={() => {
+                    scrollToSection(link.ref);
+                    closeMobileMenu();
+                  }}
+                  className="block py-2 px-4 text-white rounded hover:bg-[#0f3d26] transition-colors duration-300 transform hover:scale-105"
+                >
+                  {link.name}
+                </Link>
+              )}
             </li>
           ))}
         </ul>

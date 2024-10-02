@@ -1,6 +1,6 @@
 import { FaCalendarAlt } from 'react-icons/fa';
 
-export default function VillageActivities({data}) {
+export default function VillageActivities({ data }) {
   const activitiesData = data || [];
 
   if (activitiesData.length === 0) {
@@ -8,10 +8,10 @@ export default function VillageActivities({data}) {
       <section className="h-screen py-16 bg-gray-100">
         <div className="container mx-auto px-6 mb-12">
           <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-green-600 mb-2">
-            Kegiatan Desa Kami
+            Kegiatan Kami
           </h2>
           <p className="text-xl font-medium text-gray-700 italic mb-2">
-            Ikuti berbagai kegiatan seru dan bermanfaat yang diselenggarakan di desa kami.
+            Ikuti berbagai kegiatan seru dan bermanfaat yang diselenggarakan.
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-green-600 rounded-full mb-4"></div>
         </div>
@@ -33,10 +33,10 @@ export default function VillageActivities({data}) {
       <div className="container mx-auto px-6">
         <div className="mb-12">
           <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-green-600">
-            Kegiatan Desa Kami
+            Kegiatan Kami
           </h2>
           <p className="text-xl font-medium text-gray-700 italic mb-2">
-            Ikuti berbagai kegiatan seru dan bermanfaat yang diselenggarakan di desa kami.
+            Ikuti berbagai kegiatan seru dan bermanfaat yang diselenggarakan.
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-green-600 rounded-full mb-2"></div>
         </div>

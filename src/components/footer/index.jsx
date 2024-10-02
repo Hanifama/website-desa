@@ -1,15 +1,10 @@
 import React from 'react';
-import { useVillageProfile } from '../../hooks/useAPI';
 import { Link } from 'react-router-dom';
 import defaultLogo from '../../assets/defaultLogo.jpg';
 
 export default function Footer({ data, scrollToSection, refs }) {
   const currentYear = new Date().getFullYear();
-  const {
-    name,
-    address,
-    email,    
-  } = data || {};
+  const { name, address, email } = data || {};
 
   const handleImageError = (event) => {
     event.target.src = defaultLogo;
@@ -21,12 +16,12 @@ export default function Footer({ data, scrollToSection, refs }) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">           
           <div className="flex items-center space-x-6 mb-8 border-b border-gray-600 pb-6">
             <Link to="/" className="flex items-center space-x-4 hover:text-gray-100 transition duration-300">
-            <img
-              src={data.logo ? `https://bucket-2.nos.wjv-1.neo.id/${data.logo}` : defaultLogo}
-              alt="Logo Instansi"
-              className="w-12 h-12 object-cover"
-              onError={handleImageError}
-            />
+              <img
+                src={data.logo ? `https://bucket-2.nos.wjv-1.neo.id/${data.logo}` : defaultLogo}
+                alt="Logo Instansi"
+                className="w-12 h-12 object-cover"
+                onError={handleImageError}
+              />
               <div className="flex flex-col">
                 <span className="text-2xl font-semibold">{name || 'Default Name'}</span>
                 <span className="text-sm">{address || 'Default District'}</span>
@@ -52,7 +47,7 @@ export default function Footer({ data, scrollToSection, refs }) {
                     className="hover:text-gray-100 transition duration-300"
                     onClick={() => scrollToSection(refs.newsRef)}
                   >
-                    Berita Desa
+                    Berita Kami
                   </button>
                 </li>
                 <li>
@@ -60,26 +55,28 @@ export default function Footer({ data, scrollToSection, refs }) {
                     className="hover:text-gray-100 transition duration-300"
                     onClick={() => scrollToSection(refs.apparatusRef)}
                   >
-                    Aparat Desa
+                    Tim PLG
                   </button>
                 </li>
               </ul>
-              <ul className="space-y-2">
-                {/* <li>
-                  <button 
-                    className="hover:text-gray-100 transition duration-300"
-                    onClick={() => scrollToSection(refs.marketRef)}
-                  >
-                    UMKM Desa
-                  </button>
-                </li> */}
+              <ul className="space-y-2">                
                 <li>
                   <button 
                     className="hover:text-gray-100 transition duration-300"
                     onClick={() => scrollToSection(refs.activitiesRef)}
                   >
-                    Kegiatan Desa
+                    Kegiatan Kami
                   </button>
+                </li>
+                <li>
+                  <a 
+                    href="https://cctv-tnwk.pptik.id/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-gray-100 transition duration-300"
+                  >
+                    CCTV TNWK
+                  </a>
                 </li>
               </ul>
             </div>

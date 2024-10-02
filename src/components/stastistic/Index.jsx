@@ -11,7 +11,7 @@ export default function Statistic({data}) {
                     
                     <h3 className="text-xl font-semibold text-[#3b3b30]">Berita dan Informasi</h3>
                 </div>
-                <p className="text-gray-600">Informasi mengenai kegiatan terbaru di desa.</p>
+                <p className="text-gray-600">Informasi mengenai berita terbaru.</p>
             </div>
             <div className="bg-[#e6f7f5] shadow-md rounded-lg p-6 flex flex-col items-center w-full">
                 <FaHome className="text-4xl mb-2 text-[#5c6d3e]" />
@@ -25,7 +25,7 @@ export default function Statistic({data}) {
                 <div className="flex items-center">                    
                     <h3 className="text-xl font-semibold text-[#3b3b30]">Kegiatan dan Acara</h3>
                 </div>
-                <p className="text-gray-600">Gambar-gambar menarik dari desa.</p>
+                <p className="text-gray-600">Kegiatan menarik dan terbaru</p>
             </div>
         </div>
 
