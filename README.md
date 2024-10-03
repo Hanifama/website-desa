@@ -7,9 +7,6 @@ Proyek **Website Desa** ini bertujuan untuk memberikan solusi digital bagi desa-
 - [Labuhan Ratu](https://labuhan-ratu.pptik.id/)
 - [Palembang](https://plg.pptik.id/)
 
-![Screenshot Template Desa 1](https://your-screenshot-link.png)
-![Screenshot Template Desa 2](https://your-screenshot-link.png)
-![Screenshot Template Desa 3](https://your-screenshot-link.png)
 
 ## 🚀 Fitur Utama
 - 👥 **Aparat Desa**: Informasi tentang struktur pemerintahan dan profil aparat desa.
