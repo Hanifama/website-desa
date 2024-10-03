@@ -5,14 +5,20 @@ Proyek **Website Desa** ini bertujuan untuk memberikan solusi digital bagi desa-
 ## 🖼️ Demo Website
 - [Braja Harjosari](https://braja-harjosari.pptik.id/)
 - [Labuhan Ratu](https://labuhan-ratu.pptik.id/)
-- [Pusat Latihan Gajah](https://plg.pptik.id/)
+- [Palembang](https://plg.pptik.id/)
 
+![Screenshot Template Desa 1](https://your-screenshot-link.png)
+![Screenshot Template Desa 2](https://your-screenshot-link.png)
+![Screenshot Template Desa 3](https://your-screenshot-link.png)
 
 ## 🚀 Fitur Utama
-- 📑 **Informasi Desa**: Berita, profil desa, sejarah desa, dan data penduduk.
-- 🛠️ **Pelayanan Publik**: Informasi layanan administrasi online untuk warga desa.
-- 🗺️ **Peta Desa**: Peta interaktif yang menunjukkan lokasi penting seperti kantor desa, sekolah, dan tempat ibadah.
-- 💼 **UMKM Lokal**: Direktori usaha mikro, kecil, dan menengah untuk meningkatkan perekonomian desa.
+- 👥 **Aparat Desa**: Informasi tentang struktur pemerintahan dan profil aparat desa.
+- 📰 **Berita Desa**: Menyajikan berita terbaru dan informasi penting dari desa.
+- 💼 **UMKM Desa**: Direktori usaha mikro, kecil, dan menengah yang beroperasi di desa untuk mendukung perekonomian lokal.
+- 🛠️ **Aktivitas Desa**: Informasi tentang kegiatan dan acara yang diadakan oleh desa.
+- 🗺️ **Peta Desa**:
+  - **Peta Letak Balai Desa**: Menunjukkan lokasi kantor desa dan fasilitas umum lainnya.
+  - **Peta Batas Wilayah Desa**: Memvisualisasikan batas-batas administratif desa.
 
 ## 📦 Cara Instalasi
 1. Clone repository:
