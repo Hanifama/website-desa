@@ -1,6 +1,6 @@
 import API from "./api";
 
-// Village GUID 
+// GUID DESA
 const GUID = 'e3dbc848-facd-4ce2-9c77-ad18258f9a7d';
 
 // Fetch the village profile
